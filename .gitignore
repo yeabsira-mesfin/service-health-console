@@ -34,3 +34,8 @@ Desktop.ini
 #.next/
 .next/
 
+
+/data/
+*.db
+*.db-shm
+*.db-wal
