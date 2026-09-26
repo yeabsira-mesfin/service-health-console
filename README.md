@@ -28,6 +28,7 @@ The seed creates **216 synthetic probes and one clearly labeled demo incident** 
 - Investigating → identified → monitoring → resolved incident workflow with notes and optimistic version checks.
 - Bearer-token protection and same-origin checks on mutation endpoints.
 - JSON service reports, a responsive dashboard, and automated checks.
+- Combine service, severity, lifecycle status, and case-insensitive title filters in the incident workspace. Filters default to open incidents, show a result count, and reset in one click. They apply to the snapshot's latest 100 incidents (open first), not the entire archive. Service metrics, open-incident totals, and exported reports stay workspace-wide. A selected timeline hides when its incident no longer matches.
 
 ```mermaid
 flowchart LR
