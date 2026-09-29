@@ -73,3 +73,11 @@ For containers: set ADMIN_TOKEN, run `docker compose up --build`, then optionall
 This is a **local operations lab**, not a production monitoring platform or a vendor integration. Reads are unauthenticated; the token is a shared operator credential, not user identity or role-based access. Before sharing a deployment, add HTTPS, authenticated reads, named operator identities, per-service authorization, request limits, retention, and backups. SQLite is intentionally synchronous; incident listing is capped at 100 and probes are aggregated in process.
 
 Probe frequency and coverage affect sample-based availability and budget calculations. They must not be presented as request-weighted SLAs or full elapsed-time uptime. Source history from the former ppn-site marketing scaffold remains in Git; the current project replaces that template with the operations console.
+
+## Share incident filters
+
+Copy the address bar after changing a filter. For example, `/?service=orders&severity=sev1&status=resolved&query=checkout` opens that incident view. Reload and browser Back/Forward restore the filter controls and results. Reset returns to open incidents. Reporting windows and workspace-wide metrics are unchanged.
+
+Supported parameters are `service` (identity/orders/web), `severity` (sev1/sev2/sev3), `status` (open/investigating/identified/monitoring/resolved), and `query` (title text, up to 140 characters). Omitted parameters use defaults; `status=` explicitly includes all statuses. Invalid enum values and duplicate parameters fall back to defaults. Control characters are removed from search text. Changes create history entries, including title edits.
+
+Only those four fields are serialized. Unknown parameters and fragments are removed on load/navigation. The operator token remains separate in page memory and is never read from or written to the URL or history state. Shared title searches are visible in browser history, so do not paste credentials into search text. Links filter the latest 100 loaded incidents, not the full archive.
