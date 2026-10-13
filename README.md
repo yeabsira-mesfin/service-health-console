@@ -81,3 +81,9 @@ Copy the address bar after changing a filter. For example, `/?service=orders&sev
 Supported parameters are `service` (identity/orders/web), `severity` (sev1/sev2/sev3), `status` (open/investigating/identified/monitoring/resolved), and `query` (title text, up to 140 characters). Omitted parameters use defaults; `status=` explicitly includes all statuses. Invalid enum values and duplicate parameters fall back to defaults. Control characters are removed from search text. Changes create history entries, including title edits.
 
 Only those four fields are serialized. Unknown parameters and fragments are removed on load/navigation. The operator token remains separate in page memory and is never read from or written to the URL or history state. Shared title searches are visible in browser history, so do not paste credentials into search text. Links filter the latest 100 loaded incidents, not the full archive.
+
+## Front-end engineering showcase: Building Operations Analytics
+
+Open **`/building-analytics`** for a separate React data-intensive interface simulating 12 fictional commercial properties, 216 equipment assets, and deterministic 15-minute equipment measurements. Explore interactive portfolio power trends, multi-field filtering, asset drilldowns, explicit stale/missing-data states, responsive tables, and a human-confirmed decision-support review flow. The simulation neither connects to nor controls any physical equipment.
+
+See [Building Analytics architecture, tests and trade-offs](docs/building-analytics.md). The route runs alongside, and does not change, the existing local service-health/incident APIs.
